@@ -6,6 +6,16 @@
 
 #include <node.h>
 #include <string.h>
+#include <node_object_wrap.h>
+
+using node::ObjectWrap;
+using v8::Object;
+using v8::Local;
+using v8::Isolate;
+using v8::Persistent;
+using v8::Value;
+using v8::Function;
+using v8::FunctionCallbackInfo;
 
 extern "C" {
 	//SHARED MEMORY
@@ -24,16 +34,17 @@ extern "C" {
 
 class SHMobject : public node::ObjectWrap {
  public:
-  static void Init();
-  static v8::Handle<v8::Value> NewInstance(const v8::Arguments& args);
+  static void Init(Isolate* isolate);
+  static void NewInstance(const v8::FunctionCallbackInfo<v8::Value>& args);
   double Val() const { return val_; }
 
  private:
-  SHMobject();
+	 explicit SHMobject(double val = 0) { val_ = val; };
   ~SHMobject();
 
-  static v8::Persistent<v8::Function> constructor;
-  static v8::Handle<v8::Value> New(const v8::Arguments& args);
+  static Persistent<Function> constructor;
+
+  static void New(const v8::FunctionCallbackInfo<v8::Value>& args);
   double val_;
 };
 

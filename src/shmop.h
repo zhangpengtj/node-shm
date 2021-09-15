@@ -8,13 +8,13 @@
 #define __SHMOP_H_INCLUDED__
 
 
-										// NOTICE !   convention returning booleans true = 1, false = 0
-								#define RETURN_TRUE		return 1
-								#define RETURN_FALSE	return 0	
-								#define RETURN_NULL		return NULL	
+		// NOTICE !   convention returning booleans true = 1, false = 0
+#define RETURN_TRUE		return 1
+#define RETURN_FALSE	return 0	
+#define RETURN_NULL		return NULL	
 
-								#define PHP_SHMOP_GET_RES
-								#define MAX_SHM_IDs	32
+#define PHP_SHMOP_GET_RES
+#define MAX_SHM_IDs	32
 								
 #include <stddef.h>
 #include <stdarg.h>
@@ -133,7 +133,7 @@ int shmop_open (int key, char* flags, int mode, int size);	//PHP_FUNCTION(shmop_
 unsigned char*  shmop_read (int shmid, int start, int count);	//PHP_FUNCTION(shmop_read)
 int  shmop_size (int shmid);	//PHP_FUNCTION(shmop_size)
 int  shmop_write (int shmid, char * data, int offset, int data_len);	//PHP_FUNCTION(shmop_write)
-int shmop_delete (int shmid);	//PHP_FUNCTION(shmop_delete)
+int  shmop_delete (int shmid);	//PHP_FUNCTION(shmop_delete)
 int  shmop_close (int shmid);	//PHP_FUNCTION(shmop_close)
 
 
