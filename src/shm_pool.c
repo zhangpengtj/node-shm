@@ -1,4 +1,4 @@
-#include "shm.h";
+#include "shm.h"
 
 #if defined DEBUG_SHM
 /*****************************DEBUGGING*************************/
